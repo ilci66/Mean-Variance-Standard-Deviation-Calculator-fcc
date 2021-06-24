@@ -6,7 +6,6 @@ def calculate(list):
     raise ValueError("List must contain nine numbers.")
 
   arr = []
-  result = dict()
 
   ls = np.array(list)
   
@@ -15,82 +14,54 @@ def calculate(list):
 
   print(ls, arr)
 
-  mean_axis_one = np.mean(arr, axis=0)
-  mean_axis_two = np.mean(arr, axis=1)
-  mean_flattened = np.mean(arr)
-  
   mean_values = []
 
-  mean_values.append(mean_axis_one.tolist())
-  mean_values.append(mean_axis_two.tolist())
-  mean_values.append(mean_flattened)
-  result["mean"] = mean_values
-
-  variance_axis_one = np.var(arr, axis=0)
-  variance_axis_two = np.var(arr, axis=1)
-  variance_flattened = np.var(arr)
+  mean_values.append(np.mean(arr, axis=0).tolist())
+  mean_values.append(np.mean(arr, axis=1).tolist())
+  mean_values.append(np.mean(arr).tolist())
 
   variance_values = []
 
-  variance_values.append(variance_axis_one.tolist())
-  variance_values.append(variance_axis_two.tolist())
-  variance_values.append(variance_flattened.tolist())
-
-  result["variance"] = variance_values
-
-  std_dev_one = np.std(arr, axis=0)
-  std_dev_two = np.std(arr, axis=1)
-  std_dev_flattened = np.std(arr)
+  variance_values.append(np.var(arr, axis=0).tolist())
+  variance_values.append(np.var(arr, axis=1).tolist())
+  variance_values.append(np.var(arr).tolist())
 
   standard_deviation_values = []
 
-  standard_deviation_values.append(std_dev_one.tolist())
-  standard_deviation_values.append(std_dev_two.tolist())
-  standard_deviation_values.append(std_dev_flattened.tolist())
+  standard_deviation_values.append(np.std(arr, axis=0).tolist())
+  standard_deviation_values.append(np.std(arr, axis=1).tolist())
+  standard_deviation_values.append(np.std(arr).tolist())
 
-  result[" standard deviation"] = standard_deviation_values
-  
-  max_one = np.amax(arr, axis=0)
-  max_two = np.amax(arr, axis=1)
-  max_flattened = np.amax(arr)
+
 
   max_values = []
 
-  max_values.append(max_one.tolist())
-  max_values.append(max_two.tolist())
-  max_values.append(max_flattened.tolist())
+  max_values.append(np.amax(arr, axis=0).tolist())
+  max_values.append(np.amax(arr, axis=1).tolist())
+  max_values.append(np.amax(arr).tolist())
 
-  result["max"] = max_values
-
-  min_one = np.amin(arr, axis=0)
-  min_two = np.amin(arr, axis=1)
-  min_flattened = np.amin(arr)
 
   min_values = []
 
-  min_values.append(min_one.tolist())
-  min_values.append(min_two.tolist())
-  min_values.append(min_flattened.tolist())
-
-  result["min"] = min_values
-
-  sum_one = np.sum(arr, axis=0)
-  sum_two = np.sum(arr, axis=1)
-  sum_flattened = np.sum(arr)
+  min_values.append(np.amin(arr, axis=0).tolist())
+  min_values.append(np.amin(arr, axis=1).tolist())
+  min_values.append(np.amin(arr).tolist())
 
   sum_values = []
 
-  sum_values.append(sum_one.tolist())
-  sum_values.append(sum_two.tolist())
-  sum_values.append(sum_flattened.tolist())
+  sum_values.append(np.sum(arr, axis=0).tolist())
+  sum_values.append(np.sum(arr, axis=1).tolist())
+  sum_values.append(np.sum(arr).tolist())
 
-  result["sum"] = sum_values
-
-
-  # print(result)
-  return result
+  return {
+    "mean": mean_values,
+    "variance":variance_values,
+    "standard deviation": standard_deviation_values,
+    "max": max_values,
+    "min": min_values,
+    "sum": sum_values
+  }
     
 
 
-calculate([0,1,2,3,4,5,6,7,8])
-# print(calculate([0,1,2,3,4,5,6,7,8]))
+print(calculate([2,6,2,8,4,0,1,5,7]))
